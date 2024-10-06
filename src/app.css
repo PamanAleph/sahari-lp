@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes bounceAndSway {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-10px) translateX(-5px); 
+    }
+    50% {
+      transform: translateY(0) translateX(5px); 
+    }
+    75% {
+      transform: translateY(-10px) translateX(-5px); 
+    }
+    100% {
+      transform: translateY(0) translateX(0); 
+    }
+  }
+  
+  .bounce-and-sway-animation {
+    animation: bounceAndSway 3s ease-in-out infinite;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0;
+  }
