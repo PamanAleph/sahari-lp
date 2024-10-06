@@ -6,12 +6,15 @@
   import GridBeam from "../components/GridBeam.svelte";
   import BoxReveal from "../components/BoxReveal.svelte";
   import MaskEffect from "../components/mask/MaskEffect.svelte";
+  import MovingCards from "../components/MovingCards.svelte";
+  import BackgroundBeams from "../components/BackgroundBeams.svelte";
 
   // assets
   import SahariLogo from "../assets/logo/sahari.png";
   import SahariFriends from "../assets/logo/sahari_friends.png";
   import SahariMemory from "../assets/logo/sahari_memory.png";
   import SahariMemoryPlus from "../assets/logo/sahari_memory+.png";
+
   // mapping
   const ServiceCard = [
     {
@@ -43,6 +46,39 @@
       image: SahariMemoryPlus,
     },
   ];
+
+  const testimonials = [
+    {
+        quote: "Sahari transformed my dating experience! The variety of talents available made it easy to find someone who shared my interests. I felt comfortable and excited during our date!",
+        name: 'Sarah Johnson',
+        title: 'Happy Customer'
+    },
+    {
+        quote: "Working with Sahari has been a game-changer for me. I love connecting with people and helping them create memorable experiences. The support and professionalism of the team are exceptional!",
+        name: 'Alex Roberts',
+        title: 'Talent Partner'
+    },
+    {
+        quote: "I was nervous about online dating, but Sahari's platform made everything seamless. The chat feature with the AI talent gave me confidence to take the plunge!",
+        name: 'Michael Lee',
+        title: 'Satisfied User'
+    },
+    {
+        quote: "Collaborating with Sahari has allowed us to reach a wider audience. Their commitment to quality and customer satisfaction is evident in everything they do.",
+        name: 'Emily White',
+        title: 'Local Business Owner'
+    },
+    {
+        quote: "Joining Sahari has not only provided me with a source of income but also the joy of meeting new people. I appreciate the emphasis on safety and professionalism!",
+        name: 'Jessica Brown',
+        title: 'Talent Performer'
+    },
+    {
+        quote: "Sahari is the future of dating! I loved the offline date option. The whole experience felt genuine and exciting.",
+        name: 'David Smith',
+        title: 'Enthusiastic User'
+    }
+];
 
   import { cn } from "$lib/utils";
   import AnimatedBeam from "../components/beam/AnimatedBeam.svelte";
@@ -233,12 +269,22 @@
   <MaskEffect size={10} revealSize={700} className="rounded-md">
     <p
       slot="revealText"
-      class="mx-auto text-center text-4xl font-bold py-10 px-10 md:px-40"
+      class="mx-auto text-center text-xl md:text-4xl font-bold py-10 px-10 md:px-40"
     >
       SAHARI connects you with companions for conversations, recreation, and
       more, ensuring a safe and professional experience.
     </p>
-    <span class="text-red-500">SAHARI</span> offers a unique way to connect with companions, prioritizing safety and
-    privacy for <span class="text-red-500">positive experiences.</span>
+    <span class="text-red-500">SAHARI</span> offers a unique way to connect with
+    companions, prioritizing safety and privacy for
+    <span class="text-red-500">Positive Experiences.</span>
   </MaskEffect>
+</div>
+
+<!-- testimonials  -->
+<div class="relative antialiased">
+  <h2 class="text-center text-3xl font-bold py-10 px-10 md:px-40">
+    What Our Clients Say
+  </h2>
+  <MovingCards items={testimonials} direction="right" speed="slow" />
+  <BackgroundBeams />
 </div>
