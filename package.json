@@ -24,7 +24,6 @@
 		"mini-svg-data-uri": "^1.4.4",
 		"svelte-inview": "^4.0.4",
 		"svelte-motion": "^0.12.2",
-		"svelte-routing": "^2.13.0",
 		"tailwind-merge": "^2.5.3"
 	}
 }

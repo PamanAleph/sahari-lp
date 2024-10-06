@@ -9,7 +9,6 @@
   import MovingCards from "../components/MovingCards.svelte";
   import BackgroundBeams from "../components/BackgroundBeams.svelte";
   import StickyScroll from "../components/StickyScroll.svelte";
-  import { Link } from 'svelte-routing';
 
   // assets
   import SahariLogo from "../assets/logo/sahari.png";
@@ -160,7 +159,7 @@
         Offering safe companionship and AI-driven experiences, we’re committed
         to helping you feel connected and supported.
       </h2>
-      <div class="flex justify-center md:justify-start">
+      <div class="flex justify-center md:justify-start">  
         <Button class="my-4 ">Join Us</Button>
       </div>
     </BlurFade>
@@ -349,19 +348,20 @@
         Ready to find meaningful companionship? Start your journey with us today
         and discover a world of connection.
       </p>
-      <Link to="/signup">
-        <Button
-          class="mt-6 inline-block px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition duration-300"
-        >
-          Join Now
-        </Button>
-      </Link>
     </div>
   </div>
 
   <BackgroundBeams />
+  <a href="https://www.youtube.com/watch?v=-_xcfVKY8Ng" target="external">
+    <div class="flex justify-center">
+      <Button
+        class="mt-6 inline-block px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition duration-300"
+      >
+        Join Now
+      </Button>
+    </div>
+  </a>
 </section>
-
 <!-- Why choose us -->
 
 <section class="relative py-16">
