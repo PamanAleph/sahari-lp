@@ -8,6 +8,7 @@
   import MaskEffect from "../components/mask/MaskEffect.svelte";
   import MovingCards from "../components/MovingCards.svelte";
   import BackgroundBeams from "../components/BackgroundBeams.svelte";
+  import StickyScroll from "../components/StickyScroll.svelte";
 
   // assets
   import SahariLogo from "../assets/logo/sahari.png";
@@ -16,6 +17,35 @@
   import SahariMemoryPlus from "../assets/logo/sahari_memory+.png";
 
   // mapping
+
+  const content = [
+    {
+      title: "Safe and Trusted Approach",
+      description:
+        "Sahari guarantees your safety and comfort while using our services. Every talent goes through a strict verification process, so you can enjoy your time together without any worries. User privacy and safety are our top priorities.",
+    },
+    {
+      title: "Personal and Empathetic Service",
+      description:
+        "We understand the importance of emotional connection. With an empathetic approach, Sahari ensures every meeting and conversation feels personal, providing comfort to those in need of a companion or social interaction.",
+    },
+    {
+      title: "Innovative AI Chatbot Feature",
+      description:
+        "Sahari Memori offers a unique opportunity to interact with an AI chatbot that can simulate conversations with your loved ones. Using cutting-edge AI technology, you can relive the warmth of past memories.",
+    },
+    {
+      title: "Professional and Experienced Talent",
+      description:
+        "Every talent at Sahari is selected based on their experience and ability to create a warm and comfortable atmosphere. They are ready to accompany you in various social activities with professionalism and friendliness.",
+    },
+    {
+      title: "Flexible Service",
+      description:
+        "With Sahari Memory+, you can enjoy additional features such as priority booking and more flexible durations. We offer an experience tailored to your needs, making every moment together more meaningful.",
+    },
+  ];
+
   const ServiceCard = [
     {
       title: 'Sahari Friends<span class="text-[#5046e6]">.</span>',
@@ -49,36 +79,42 @@
 
   const testimonials = [
     {
-        quote: "Sahari transformed my dating experience! The variety of talents available made it easy to find someone who shared my interests. I felt comfortable and excited during our date!",
-        name: 'Sarah Johnson',
-        title: 'Happy Customer'
+      quote:
+        "Sahari transformed my dating experience! The variety of talents available made it easy to find someone who shared my interests. I felt comfortable and excited during our date!",
+      name: "Sarah Johnson",
+      title: "Happy Customer",
     },
     {
-        quote: "Working with Sahari has been a game-changer for me. I love connecting with people and helping them create memorable experiences. The support and professionalism of the team are exceptional!",
-        name: 'Alex Roberts',
-        title: 'Talent Partner'
+      quote:
+        "Working with Sahari has been a game-changer for me. I love connecting with people and helping them create memorable experiences. The support and professionalism of the team are exceptional!",
+      name: "Alex Roberts",
+      title: "Talent Partner",
     },
     {
-        quote: "I was nervous about online dating, but Sahari's platform made everything seamless. The chat feature with the AI talent gave me confidence to take the plunge!",
-        name: 'Michael Lee',
-        title: 'Satisfied User'
+      quote:
+        "I was nervous about online dating, but Sahari's platform made everything seamless. The chat feature with the AI talent gave me confidence to take the plunge!",
+      name: "Michael Lee",
+      title: "Satisfied User",
     },
     {
-        quote: "Collaborating with Sahari has allowed us to reach a wider audience. Their commitment to quality and customer satisfaction is evident in everything they do.",
-        name: 'Emily White',
-        title: 'Local Business Owner'
+      quote:
+        "Collaborating with Sahari has allowed us to reach a wider audience. Their commitment to quality and customer satisfaction is evident in everything they do.",
+      name: "Emily White",
+      title: "Local Business Owner",
     },
     {
-        quote: "Joining Sahari has not only provided me with a source of income but also the joy of meeting new people. I appreciate the emphasis on safety and professionalism!",
-        name: 'Jessica Brown',
-        title: 'Talent Performer'
+      quote:
+        "Joining Sahari has not only provided me with a source of income but also the joy of meeting new people. I appreciate the emphasis on safety and professionalism!",
+      name: "Jessica Brown",
+      title: "Talent Performer",
     },
     {
-        quote: "Sahari is the future of dating! I loved the offline date option. The whole experience felt genuine and exciting.",
-        name: 'David Smith',
-        title: 'Enthusiastic User'
-    }
-];
+      quote:
+        "Sahari is the future of dating! I loved the offline date option. The whole experience felt genuine and exciting.",
+      name: "David Smith",
+      title: "Enthusiastic User",
+    },
+  ];
 
   import { cn } from "$lib/utils";
   import AnimatedBeam from "../components/beam/AnimatedBeam.svelte";
@@ -107,7 +143,7 @@
     </BlurFade>
     <BlurFade delay={0.65}>
       <p
-        class="text-[2rem] md:text-[4rem] font-bold bg-gradient-to-r from-violet-600 to-orange-400 text-transparent bg-clip-text"
+        class="font-anta text-[2rem] md:text-[4rem] font-bold bg-gradient-to-r from-violet-600 to-orange-400 text-transparent bg-clip-text"
       >
         SAHARI <span
           class="bg-gradient-to-r text-transparent bg-clip-text from-violet-600 to-orange-400"
@@ -155,7 +191,7 @@
           </div>
           <div class="relative z-10">
             <BoxReveal boxColor="#5046e6" duration={0.5}>
-              <p class="text-[2rem] font-semibold">
+              <p class="text-[2rem] font-semibold font-anta">
                 {@html card.title}
               </p>
             </BoxReveal>
@@ -265,7 +301,7 @@
   </div>
 </GridBeam>
 
-<div class="flex items-center justify-center overflow-hidden">
+<section class="flex items-center justify-center overflow-hidden">
   <MaskEffect size={10} revealSize={700} className="rounded-md">
     <p
       slot="revealText"
@@ -278,13 +314,33 @@
     companions, prioritizing safety and privacy for
     <span class="text-red-500">Positive Experiences.</span>
   </MaskEffect>
-</div>
+</section>
 
 <!-- testimonials  -->
-<div class="relative antialiased">
-  <h2 class="text-center text-3xl font-bold py-10 px-10 md:px-40">
+<section class="relative antialiased py-8">
+  <h2 class="text-center text-3xl font-bold py-12 px-10 md:px-40">
     What Our Clients Say
   </h2>
   <MovingCards items={testimonials} direction="right" speed="slow" />
+  <MovingCards items={testimonials} direction="left" speed="slow" />
   <BackgroundBeams />
-</div>
+</section>
+
+<!-- Why choose us -->
+
+<section class="relative py-16">
+  <div class="container mx-auto px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        Why Choose Us
+      </h2>
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+        Experience unmatched companionship and emotional support through our
+        innovative platform, designed to bring meaningful connections to life.
+      </p>
+    </div>
+  </div>
+  <div class="mt-16">
+    <StickyScroll {content} />
+  </div>
+</section>

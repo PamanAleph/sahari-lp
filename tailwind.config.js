@@ -42,6 +42,10 @@ module.exports = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
     extend: {
+      fontFamily:{
+        poppins: ['Poppins', 'sans-serif'],
+        anta: ['Anta', 'sans-serif'],
+      },
       animation: {
         scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
