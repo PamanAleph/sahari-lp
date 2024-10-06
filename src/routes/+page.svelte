@@ -9,6 +9,7 @@
   import MovingCards from "../components/MovingCards.svelte";
   import BackgroundBeams from "../components/BackgroundBeams.svelte";
   import StickyScroll from "../components/StickyScroll.svelte";
+  import { Link } from 'svelte-routing';
 
   // assets
   import SahariLogo from "../assets/logo/sahari.png";
@@ -302,7 +303,7 @@
 </GridBeam>
 
 <section class="flex items-center justify-center overflow-hidden">
-  <MaskEffect size={10} revealSize={700} className="rounded-md">
+  <MaskEffect size={10} revealSize={700} className="rounded-md font-anta">
     <p
       slot="revealText"
       class="mx-auto text-center text-xl md:text-4xl font-bold py-10 px-10 md:px-40"
@@ -318,11 +319,46 @@
 
 <!-- testimonials  -->
 <section class="relative antialiased py-8">
-  <h2 class="text-center text-3xl font-bold py-12 px-10 md:px-40">
-    What Our Clients Say
-  </h2>
-  <MovingCards items={testimonials} direction="right" speed="slow" />
-  <MovingCards items={testimonials} direction="left" speed="slow" />
+  <div class="container mx-auto px-6 lg:px-8">
+    <!-- Section Title -->
+    <h2
+      class="text-center text-4xl font-bold tracking-tight py-12 px-10 md:px-40"
+    >
+      What Our Clients Say
+    </h2>
+
+    <p class="text-center text-lg text-gray-300 max-w-3xl mx-auto mt-4">
+      Our clients value the personal connections and thoughtful interactions
+      they've had through our service. Here's what they have to say about the
+      unforgettable experiences and support they've found.
+    </p>
+
+    <!-- Moving Testimonial Cards -->
+    <div class="relative overflow-hidden mt-16">
+      <MovingCards
+        items={testimonials}
+        direction="right"
+        speed="slow"
+        class="my-8"
+      />
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-8">
+      <p class="text-xl font-medium text-gray-300">
+        Ready to find meaningful companionship? Start your journey with us today
+        and discover a world of connection.
+      </p>
+      <Link to="/signup">
+        <Button
+          class="mt-6 inline-block px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition duration-300"
+        >
+          Join Now
+        </Button>
+      </Link>
+    </div>
+  </div>
+
   <BackgroundBeams />
 </section>
 
@@ -332,14 +368,17 @@
   <div class="container mx-auto px-6 lg:px-8">
     <div class="text-center">
       <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-        Why Choose Us
+        <BlurFade delay={0.5}>Why Choose Us</BlurFade>
       </h2>
       <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
-        Experience unmatched companionship and emotional support through our
-        innovative platform, designed to bring meaningful connections to life.
+        <BlurFade delay={0.75}>
+          Experience unmatched companionship and emotional support through our
+          innovative platform, designed to bring meaningful connections to life.
+        </BlurFade>
       </p>
     </div>
   </div>
+
   <div class="mt-16">
     <StickyScroll {content} />
   </div>

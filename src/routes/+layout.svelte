@@ -1,7 +1,11 @@
 <script>
-    import "../app.css";
+  import "../app.css";
   import Navbar from "../components/Navbar.svelte";
-  </script>
-    <Navbar />
+  import { Router } from 'svelte-routing';
+</script>
 
+<Navbar />
+
+<Router>
   <slot />
+</Router>
