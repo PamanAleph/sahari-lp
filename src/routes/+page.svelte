@@ -5,6 +5,7 @@
   import Button from "../components/Button.svelte";
   import GridBeam from "../components/GridBeam.svelte";
   import BoxReveal from "../components/BoxReveal.svelte";
+  import MaskEffect from "../components/mask/MaskEffect.svelte";
 
   // assets
   import SahariLogo from "../assets/logo/sahari.png";
@@ -24,9 +25,9 @@
       image: SahariFriends,
     },
     {
-      title: "Sahari Memori",
+      title: "Sahari Memory",
       description: `
-        Sahari Memori allows users to interact with an AI that mimics the responses 
+        Sahari Memory allows users to interact with an AI that mimics the responses 
         of a deceased loved one. By using memory and voice samples, this AI creates 
         a warm and personal conversation experience, helping relive cherished moments.
       `,
@@ -101,8 +102,8 @@
   <Particles className="absolute inset-0" refresh={true} />
 </section>
 
-<GridBeam class="bg-grid-white/[0.05]">
-  <div class="w-full py-6 px-10 md:px-40">
+<GridBeam class="bg-grid-white/[0.05] py-8">
+  <div class="w-full px-10 md:px-40">
     <h1 class="text-center text-4xl font-bold py-6">Our Services</h1>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       {#each ServiceCard as card}
@@ -136,20 +137,19 @@
   <div
     bind:this={containerRef}
     class={cn(
-      "relative flex w-full items-center justify-center overflow-hidden rounded-lg bg-background p-10",
+      "relative flex w-full items-center justify-center overflow-hidden rounded-lg bg-background p-6 sm:p-10",
       className
     )}
   >
-    <!--  Gradient Line -->
+    <!-- Gradient Line -->
     <div class="absolute right-5 top-0 h-px w-1/2" />
-    <!-- Main Component  -->
 
+    <!-- Main Component -->
     <div
-      class="flex h-full w-full flex-row justify-between gap-16 max-w-2xl items-center"
+      class="flex h-full w-full flex-col md:flex-row justify-between gap-8 md:gap-16 max-w-2xl items-center"
     >
       <div class="flex flex-col justify-center gap-8">
         <!-- Div 1 -->
-         
         <Circle>
           <img src={SahariFriends} bind:this={div1Ref} alt="Logo" />
         </Circle>
@@ -161,15 +161,16 @@
         <Circle>
           <img src={SahariMemoryPlus} bind:this={div3Ref} alt="Logo" />
         </Circle>
-        <!-- Div 5 -->
       </div>
+
       <div class="flex flex-col justify-center">
         <!-- Div 6 -->
         <Circle>
           <img src={SahariLogo} bind:this={div6Ref} alt="Logo" />
         </Circle>
       </div>
-      <div class="flex flec-col justify-center">
+
+      <div class="flex flex-col justify-center">
         <!-- Div 7 -->
         <Circle>
           <svg
@@ -188,12 +189,13 @@
               cx="12"
               cy="7"
               r="4"
-            /></svg
-          >
+            />
+          </svg>
         </Circle>
       </div>
     </div>
 
+    <!-- Animated Beams -->
     <AnimatedBeam
       bind:containerRef
       bind:fromRef={div1Ref}
@@ -226,3 +228,17 @@
     />
   </div>
 </GridBeam>
+
+<div class="flex items-center justify-center overflow-hidden">
+  <MaskEffect size={10} revealSize={700} className="rounded-md">
+    <p
+      slot="revealText"
+      class="mx-auto text-center text-4xl font-bold py-10 px-10 md:px-40"
+    >
+      SAHARI connects you with companions for conversations, recreation, and
+      more, ensuring a safe and professional experience.
+    </p>
+    <span class="text-red-500">SAHARI</span> offers a unique way to connect with companions, prioritizing safety and
+    privacy for <span class="text-red-500">positive experiences.</span>
+  </MaskEffect>
+</div>

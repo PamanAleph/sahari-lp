@@ -1,6 +1,9 @@
 <script>
 	  import SahariLogo from "../assets/logo/sahari.png";
+	  import BlurFade from "../components/BlurFade.svelte";
+
 </script>
+<BlurFade delay={0.5}>
 
 <header class="p-4">
 	<div class="container flex justify-between h-16 mx-auto md:justify-center md:space-x-8">
@@ -36,3 +39,4 @@
 		</button>
 	</div>
 </header>
+</BlurFade>
