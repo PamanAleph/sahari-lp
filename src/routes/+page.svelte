@@ -9,7 +9,6 @@
   import MovingCards from "../components/MovingCards.svelte";
   import BackgroundBeams from "../components/BackgroundBeams.svelte";
   import StickyScroll from "../components/StickyScroll.svelte";
-  import Countdown from "../components/Countdown.svelte";
 
   // assets
   import SahariLogo from "../assets/logo/sahari.png";
