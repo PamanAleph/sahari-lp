@@ -130,10 +130,36 @@
   let div6Ref;
   let div7Ref;
   let className = "";
-</script>
+
+  // comingsoon
+
+  import { onMount } from "svelte";
+  
+  let isComingSoon = true; // Default state
+  let buttonText = "Coming Soon";
+  let buttonDisabled = true;
+
+  const comingSoon = import.meta.env.VITE_COMING_SOON === "true";  
+  const launchDate = new Date(import.meta.env.VITE_LAUNCH_TIME); 
+  const today = new Date();
+ 
+  function checkLaunchStatus() {
+    if (today >= launchDate) { 
+      isComingSoon = false;
+      buttonText = "Join Us";
+      buttonDisabled = false;
+    } else {
+      isComingSoon = comingSoon;
+    }
+  }
+
+  onMount(() => {
+    checkLaunchStatus();
+  });
+  </script>
 
 <section class="relative flex items-center">
-  <div class="py-10 px-10 md:px-40 md:text-left text-center">
+  <div class="pt-6 md:pt-12 pb-28 px-10 md:px-40 md:text-left text-center">
     <BlurFade delay={0.5}>
       <h1
         class="text-[2rem] md:text-[4rem] w-full md:w-[50rem] font-bold px-4 md:px-0"
@@ -159,10 +185,15 @@
         Offering safe companionship and AI-driven experiences, we’re committed
         to helping you feel connected and supported.
       </h2>
-      <div class="flex justify-center md:justify-start">  
-        <Button class="my-4 ">Join Us</Button>
-      </div>
     </BlurFade>
+
+    <div class="flex justify-center md:justify-start absolute z-50">
+      <a href={isComingSoon ? "#" : "https://sahari.id/"} class={buttonDisabled ? "pointer-events-none" : ""}>
+        <Button class="my-4" disabled={buttonDisabled}>
+          {buttonText}
+        </Button>
+      </a>
+    </div>
   </div>
   <BlurFade delay={0.8}>
     <img
@@ -352,12 +383,13 @@
   </div>
 
   <BackgroundBeams />
-  <a href="https://www.youtube.com/watch?v=-_xcfVKY8Ng" target="external">
+  <a href={isComingSoon ? "#" : "https://sahari.id/"} class={buttonDisabled ? "pointer-events-none" : ""}>
     <div class="flex justify-center">
       <Button
         class="mt-6 inline-block px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition duration-300"
-      >
-        Join Now
+        disabled={buttonDisabled}
+        >
+        {buttonText}
       </Button>
     </div>
   </a>

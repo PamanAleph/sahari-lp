@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
     import { Motion, AnimatePresence, useAnimation } from "svelte-motion";
     import { inview } from "svelte-inview";
     import { cn } from "../lib/utils";
