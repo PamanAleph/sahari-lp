@@ -9,6 +9,7 @@
   import MovingCards from "../components/MovingCards.svelte";
   import BackgroundBeams from "../components/BackgroundBeams.svelte";
   import StickyScroll from "../components/StickyScroll.svelte";
+  import Countdown from "../components/Countdown.svelte";
 
   // assets
   import SahariLogo from "../assets/logo/sahari.png";
@@ -134,29 +135,38 @@
   // comingsoon
 
   import { onMount } from "svelte";
-  
-  let isComingSoon = true; // Default state
+
+  let isComingSoon = true;
   let buttonText = "Coming Soon";
   let buttonDisabled = true;
 
-  const comingSoon = import.meta.env.VITE_COMING_SOON === "true";  
-  const launchDate = new Date(import.meta.env.VITE_LAUNCH_TIME); 
-  const today = new Date();
- 
-  function checkLaunchStatus() {
-    if (today >= launchDate) { 
+  // Retrieve the environment variables
+  const comingSoon = import.meta.env.VITE_COMING_SOON === "true";
+  const launchDate = new Date(import.meta.env.VITE_LAUNCH_TIME);
+
+  function updateButtonText() {
+    const today = new Date();
+    const timeDifference = launchDate - today;
+    const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+    if (today >= launchDate) {
       isComingSoon = false;
       buttonText = "Join Us";
       buttonDisabled = false;
     } else {
       isComingSoon = comingSoon;
+      buttonText = `Join Us in ${daysRemaining} days`;
+      buttonDisabled = false;
     }
   }
 
   onMount(() => {
-    checkLaunchStatus();
+    updateButtonText();
+    const interval = setInterval(updateButtonText, 24 * 60 * 60 * 1000);
+
+    return () => clearInterval(interval);
   });
-  </script>
+</script>
 
 <section class="relative flex items-center">
   <div class="pt-6 md:pt-12 pb-28 px-10 md:px-40 md:text-left text-center">
@@ -188,7 +198,10 @@
     </BlurFade>
 
     <div class="flex justify-center md:justify-start absolute z-50">
-      <a href={isComingSoon ? "#" : "https://sahari.id/"} class={buttonDisabled ? "pointer-events-none" : ""}>
+      <a
+        href={isComingSoon ? "#" : "https://sahari.id/"}
+        class={buttonDisabled ? "pointer-events-none" : ""}
+      >
         <Button class="my-4" disabled={buttonDisabled}>
           {buttonText}
         </Button>
@@ -383,12 +396,15 @@
   </div>
 
   <BackgroundBeams />
-  <a href={isComingSoon ? "#" : "https://sahari.id/"} class={buttonDisabled ? "pointer-events-none" : ""}>
+  <a
+    href={isComingSoon ? "#" : "https://sahari.id/"}
+    class={buttonDisabled ? "pointer-events-none" : ""}
+  >
     <div class="flex justify-center">
       <Button
         class="mt-6 inline-block px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition duration-300"
         disabled={buttonDisabled}
-        >
+      >
         {buttonText}
       </Button>
     </div>
