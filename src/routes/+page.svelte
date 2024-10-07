@@ -119,6 +119,7 @@
   import { cn } from "$lib/utils";
   import AnimatedBeam from "../components/beam/AnimatedBeam.svelte";
   import Circle from "../components/beam/Circle.svelte";
+  import CountDownButton from "../components/CountDownButton.svelte";
 
   let containerRef;
   // Circles
@@ -132,39 +133,10 @@
   let className = "";
 
   // comingsoon
-
-  import { onMount } from "svelte";
-
   let isComingSoon = true;
   let buttonText = "Coming Soon";
   let buttonDisabled = true;
-
-  // Retrieve the environment variables
-  const comingSoon = import.meta.env.VITE_COMING_SOON === "true";
   const launchDate = new Date(import.meta.env.VITE_LAUNCH_TIME);
-
-  function updateButtonText() {
-    const today = new Date();
-    const timeDifference = launchDate - today;
-    const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-
-    if (today >= launchDate) {
-      isComingSoon = false;
-      buttonText = "Join Us";
-      buttonDisabled = false;
-    } else {
-      isComingSoon = comingSoon;
-      buttonText = `Join Us in ${daysRemaining} days`;
-      buttonDisabled = false;
-    }
-  }
-
-  onMount(() => {
-    updateButtonText();
-    const interval = setInterval(updateButtonText, 24 * 60 * 60 * 1000);
-
-    return () => clearInterval(interval);
-  });
 </script>
 
 <section class="relative flex items-center">
@@ -201,9 +173,7 @@
         href={isComingSoon ? "#" : "https://sahari.id/"}
         class={buttonDisabled ? "pointer-events-none" : ""}
       >
-        <Button class="my-4" disabled={buttonDisabled}>
-          {buttonText}
-        </Button>
+        <CountDownButton baseText="Download Now" {launchDate} />
       </a>
     </div>
   </div>
@@ -400,12 +370,7 @@
     class={buttonDisabled ? "pointer-events-none" : ""}
   >
     <div class="flex justify-center">
-      <Button
-        class="mt-6 inline-block px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition duration-300"
-        disabled={buttonDisabled}
-      >
-        {buttonText}
-      </Button>
+      <CountDownButton baseText="Download Now" {launchDate} />
     </div>
   </a>
 </section>
@@ -430,3 +395,31 @@
     <StickyScroll {content} />
   </div>
 </section>
+
+<div class="flex items-center justify-center">
+  <div class="isolate overflow-hidden px-10 md:px-40">
+    <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-32">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        Boost your productivity.<br />Start using our app today.
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-gray-300">
+        Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
+        Malesuada adipiscing sagittis vel nulla.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <a
+          href={isComingSoon ? "#" : "https://sahari.id/"}
+          class={buttonDisabled ? "pointer-events-none" : ""}
+        >
+          <CountDownButton baseText="Get Started" {launchDate} />
+        </a>
+        <a
+          href={isComingSoon ? "#" : "https://sahari.id/"}
+          class={buttonDisabled ? "pointer-events-none" : ""}
+        >
+          <CountDownButton baseText="Join our talent network!" {launchDate} />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
