@@ -50,9 +50,9 @@
     {
       title: 'Sahari Friends<span class="text-[#5046e6]">.</span>',
       description: `
-        Sahari Friends offers companionship for users engaging in social activities, 
-        such as outings or visits to specific locations. With professional talents 
-        chosen by the user, you can enjoy a safe and comfortable social experience 
+        Sahari Friends offers companionship for users engaging in social activities,
+        such as outings or visits to specific locations. With professional talents
+        chosen by the user, you can enjoy a safe and comfortable social experience
         without the risk of negative exploitation.
       `,
       image: SahariFriends,
@@ -60,8 +60,8 @@
     {
       title: "Sahari Memory",
       description: `
-        Sahari Memory allows users to interact with an AI that mimics the responses 
-        of a deceased loved one. By using memory and voice samples, this AI creates 
+        Sahari Memory allows users to interact with an AI that mimics the responses
+        of a deceased loved one. By using memory and voice samples, this AI creates
         a warm and personal conversation experience, helping relive cherished moments.
       `,
       image: SahariMemory,
@@ -69,8 +69,8 @@
     {
       title: 'Sahari Memory<span class="text-[#5046e6] font-semibold">+</span>',
       description: `
-        A premium service that offers additional features such as priority bookings 
-        and more flexible interaction durations. Enjoy a richer experience with enhanced 
+        A premium service that offers additional features such as priority bookings
+        and more flexible interaction durations. Enjoy a richer experience with enhanced
         access to Sahari Memori, making your memories even more special.
       `,
       image: SahariMemoryPlus,
@@ -137,6 +137,7 @@
   let buttonText = "Coming Soon";
   let buttonDisabled = true;
   const launchDate = new Date(import.meta.env.VITE_LAUNCH_TIME);
+  console.log(import.meta.env.VITE_LAUNCH_TIME);
 </script>
 
 <section class="relative flex items-center">

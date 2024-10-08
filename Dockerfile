@@ -3,6 +3,10 @@ WORKDIR /app
 COPY package*.json .
 RUN npm ci
 COPY . .
+
+ENV VITE_COMING_SOON=${VITE_COMING_SOON}
+ENV VITE_LAUNCH_TIME=${VITE_LAUNCH_TIME}
+
 RUN npm run build
 RUN npm prune --production
 
@@ -10,7 +14,6 @@ FROM node:18-alpine
 WORKDIR /app
 COPY --from=builder /app/build build/
 COPY --from=builder /app/node_modules node_modules/
-COPY .env.example .env
 COPY package.json .
 EXPOSE 3000
 ENV NODE_ENV=production
